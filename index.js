@@ -185,7 +185,7 @@ bot.on("message", function(message) {
             var embed = new Discord.RichEmbed()
             .addField("Voilà sa nouvelle vidéo !", (suffix))
             .setColor(generateHex())
-            .setAuthor("Lined Bot", "https://image.noelshack.com/fichiers/2017/40/2/1507027500-sans-titre-1.png")
+            .setAuthor("Lined Bot", "https://cdn.discordapp.com/attachments/303800012838666240/371335378373967872/2F40167B905324E721E9FC074840FD6F9F272E78EBFCED8864pimgpsh_fullsize_distr.jpg")
             .setFooter("N'oublie pas le like, le commentaire, et de t'abonner.")
             .setDescription("Nouvelle vidéo sur la chaîne de Lined !")
             .setTimestamp()
