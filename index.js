@@ -182,6 +182,7 @@ bot.on("message", function(message) {
             break;
         case "video":
             if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendMessage("Tu n'as pas la permission.");
+            message.channel.sendMessage("@everyone")
             var embed = new Discord.RichEmbed()
             .addField("Voilà sa nouvelle vidéo !", (suffix))
             .setColor(generateHex())
