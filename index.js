@@ -196,8 +196,7 @@ bot.on("message", function(message) {
         case "say":
             if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendMessage("Tu n'as pas la permission.");
             message.channel.sendMessage(suffix)
-            message.react("😮")
-            console.log("Say message envoyé !")
+            message.delete()
             break;
         case "kick":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission.");
