@@ -125,11 +125,11 @@ bot.on("message", function(message) {
         member.guild.channels.find("name", "mod-log").sendEmbed(embed);
         break;
         case "mute":
+        member.addRole(rolemute)
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission.");
         if(!modlog) return message.reply("Je ne trouve pas de channel mod-log.");
         var member = message.mentions.members.first();
         if (message.mentions.users.size < 1) return message.reply("Tu as oublié de préciser qui je dois Mute.")
-        member.addRole(rolemute)
         message.channel.sendMessage("Il a bien reçu son mute.")
 
         var embed = new Discord.RichEmbed()
