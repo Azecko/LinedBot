@@ -39,7 +39,12 @@ var fortunes = [
     "T'es malade ou quoi ? Jamais mec.",
     "Aspèrge",
     "Je sais pas.",
-    "Pourquoi tu me demandes ça ?"
+    "Pourquoi tu me demandes ça ?",
+    "Ptdr t'es qui ?",
+    "Ferme ta gueule toi.",
+    "Carotte.",
+    "Mentionne pas.",
+    "Ferme ta gueule t'es puceau."
 ];
 
 var bot = new Discord.Client();
