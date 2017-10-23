@@ -95,7 +95,7 @@ bot.on("message", function(message) {
 
     var roleyoutube = member.guild.roles.find("name", "Youtube")
 
-    var rolemute = member.guild.roles.find("name", "Mute")
+    var rolemute = member.guild.roles.find("name", "Muted")
 
     var modlog = member.guild.channels.find("name", "mod-log")
 
