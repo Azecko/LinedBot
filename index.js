@@ -278,7 +278,7 @@ bot.on("message", function(message) {
             message.channel.sendEmbed(embed)
             break;
         case "modo":
-        var rolemodo = member.guild.roles.find("name", "Modérateur")
+        var rolemodo = member.guild.roles.find("name", "MODO")
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendMessage("Tu n'as pas la permission.");
         if(!modlog) return message.reply("Je ne trouve pas de channel mod-log.");
         var member = message.mentions.members.first();
