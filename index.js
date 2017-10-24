@@ -284,6 +284,15 @@ bot.on("message", function(message) {
         var member = message.mentions.members.first();
         if (message.mentions.users.size < 1) return message.reply("Tu as oublié de préciser à qui je dois ajouter le grade Modérateur")
         member.addRole(rolemodo)
+            
+        var embed = new Discord.RichEmbed()
+        .addField("Action :", "Ajout du role Modérateur à un utilisateur")
+        .addField("Utilisateur :", user.username)
+        .addField("Modérateur :", message.author.username)
+        .setColor(0x0000ff)
+        .setAuthor(message.author.username, message.author.avatarURL)
+        .setTimestamp()
+         member.guild.channels.find("name", "mod-log").sendEmbed(embed);
 
 
         var user = message.mentions.members.first();
