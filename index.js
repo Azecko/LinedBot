@@ -108,6 +108,8 @@ bot.on("message", function(message) {
     var args3 = cont.slice(1);
     switch (args[0].toLowerCase()) {
         case "unmute":
+        var member = message.mentions.members.first();
+        var rolemute = member.guild.roles.find("name", "Muted")
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission.");
         if(!modlog) return message.reply("Je ne trouve pas de channel mod-log.");
         var member = message.mentions.members.first();
@@ -125,6 +127,8 @@ bot.on("message", function(message) {
         member.guild.channels.find("name", "mod-log").sendEmbed(embed);
         break;
         case "mute":
+        var rolemute = member.guild.roles.find("name", "Muted")
+        var member = message.mentions.members.first();
         member.addRole(rolemute)
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission.");
         if(!modlog) return message.reply("Je ne trouve pas de channel mod-log.");
