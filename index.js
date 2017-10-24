@@ -297,6 +297,7 @@ bot.on("message", function(message) {
 
         var user = message.mentions.members.first();
         user.sendMessage("Le modérateur " + message.author.toString() + " t'a ajouté le grade Modérateur, profites-en bien et pas de bétises !")
+        message.channel.sendMessage("Role Modérateur ajouté à " + member.toString())
         break;
        case "graphiste":
         var rolegraphiste = member.guild.roles.find("name", "GRAPHISTE")
@@ -309,6 +310,7 @@ bot.on("message", function(message) {
 
         var user = message.mentions.members.first();
         user.sendMessage("Le modérateur " + message.author.toString() + " t'a ajouté le grade Graphiste, profites-en bien !")
+        message.channel.sendMessage("Role graphiste ajouté à " + member.toString())
         break;
             default:
             message.channel.sendMessage("Commande invalide ^^")
