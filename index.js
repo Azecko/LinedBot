@@ -298,6 +298,18 @@ bot.on("message", function(message) {
         var user = message.mentions.members.first();
         user.sendMessage("Le modérateur " + message.author.toString() + " t'a ajouté le grade Modérateur, profites-en bien et pas de bétises !")
         break;
+       case "graphiste":
+        var rolegraphiste = member.guild.roles.find("name", "GRAPHISTE")
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendMessage("Tu n'as pas la permission.");
+        if(!modlog) return message.reply("Je ne trouve pas de channel mod-log.");
+        var member = message.mentions.members.first();
+        if (message.mentions.users.size < 1) return message.reply("Tu as oublié de préciser à qui je dois ajouter le grade Graphiste.")
+        member.addRole(rolegraphiste)
+
+
+        var user = message.mentions.members.first();
+        user.sendMessage("Le modérateur " + message.author.toString() + " t'a ajouté le grade Graphiste, profites-en bien !")
+        break;
             default:
             message.channel.sendMessage("Commande invalide ^^")
     }
