@@ -53,7 +53,7 @@ var servers = {};
 
 bot.on("ready", function () {
     console.log("LinedBot ready !");
-    bot.user.setGame("L-help " + "avec " + bot.members.size + " utilisateurs")
+    bot.user.setGame("L-help " + "avec " + bot.users.size + " utilisateurs")
 });
 
 bot.on("guildMemberAdd", function(member) {
