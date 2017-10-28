@@ -53,12 +53,13 @@ var servers = {};
 
 bot.on("ready", function () {
     console.log("LinedBot ready !");
-    bot.user.setGame("L-help")
+    bot.user.setGame("L-help " + "avec " + bot.members.size + " utilisateurs")
 });
 
 bot.on("guildMemberAdd", function(member) {
     member.guild.channels.find("name", "bienvenue_aurevoir").sendMessage(member.toString() + " bienvenue à bord batard")
 
+    bot.user.setGame("L-help " + "avec " + bot.members.size + " utilisateurs")
     member.addRole(member.guild.roles.find("name", "⚓ MEMBRE"));
 });
 
