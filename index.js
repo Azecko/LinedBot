@@ -316,7 +316,7 @@ bot.on("message", function(message) {
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendMessage("Tu n'as pas la permission.");
         message.channel.sendMessage("@everyone")
         var embed = new Discord.RichEmbed()
-        .addField("Voilà sa nouvelle vidéo !", (suffix))
+        .addField("Vient vite, sois le premier ! :p", (suffix))
         .setColor(generateHex())
         .setAuthor("Lined Bot", "https://cdn.discordapp.com/attachments/303800012838666240/371335378373967872/2F40167B905324E721E9FC074840FD6F9F272E78EBFCED8864pimgpsh_fullsize_distr.jpg")
         .setFooter("Vient, like, et abonne-toi si ce n'est pas déjà fait ! :p")
