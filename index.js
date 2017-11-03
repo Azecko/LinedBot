@@ -44,7 +44,11 @@ var fortunes = [
     "Ferme ta gueule toi.",
     "Carotte.",
     "Mentionne pas.",
-    "Ferme ta gueule t'es puceau."
+    "Ferme ta gueule t'es puceau.",
+    "Moins de 12k mentionne pas.",
+    "J'vais te giffler",
+    "Ok mek",
+    "T'es EZ"
 ];
 
 var bot = new Discord.Client();
