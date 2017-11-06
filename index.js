@@ -291,7 +291,7 @@ bot.on("message", function(message) {
         member.addRole(rolemodo)
             
         var embed = new Discord.RichEmbed()
-        .addField("Action :", "Ajout du role" + rolemodo + "à un utilisateur")
+        .addField("Action :", "Ajout du role " + rolemodo + " à un utilisateur")
         .addField("Utilisateur :", user.toString())
         .addField("Modérateur :", message.author.toString())
         .setColor(0x0000ff)
@@ -301,8 +301,6 @@ bot.on("message", function(message) {
 
 
         var user = message.mentions.members.first();
-        user.sendMessage("Le modérateur " + message.author.toString() + " t'a ajouté le grade Modérateur, profites-en bien et pas de bétises !")
-        message.channel.sendMessage("Role Modérateur ajouté à " + member.toString())
         break;
        case "graphiste":
         var rolegraphiste = member.guild.roles.find("name", "GRAPHISTE")
@@ -315,14 +313,13 @@ bot.on("message", function(message) {
 
         var user = message.mentions.members.first();
         var embed = new Discord.RichEmbed()
-        .addField("Action :", "Ajout du role" + rolegraphiste + "à un utilisateur")
+        .addField("Action :", "Ajout du role " + rolegraphiste + " à un utilisateur")
         .addField("Utilisateur :", user.toString())
         .addField("Modérateur :", message.author.toString())
         .setColor(0x0000ff)
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTimestamp()
          member.guild.channels.find("name", "mod-log").sendEmbed(embed);
-        message.channel.sendMessage("Role graphiste ajouté à " + member.toString())
         break;
         case "live":
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendMessage("Tu n'as pas la permission.");
