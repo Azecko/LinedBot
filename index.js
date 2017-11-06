@@ -94,11 +94,11 @@ bot.on("message", function(message) {
 
     var member = message.member;
 
-    var rolemodo = member.guild.roles.find("name", "Modérateur")
+    var rolemodo = member.guild.roles.find("name", "MODO")
 
-    var rolefriend = member.guild.roles.find("name", "Friend")
+    var rolefriend = member.guild.roles.find("name", "AMIGO")
 
-    var roleyoutube = member.guild.roles.find("name", "Youtube")
+    var roleyoutube = member.guild.roles.find("name", "YOUTUBE")
 
     var rolemute = member.guild.roles.find("name", "Muted")
 
@@ -221,8 +221,8 @@ bot.on("message", function(message) {
 
             var embed = new Discord.RichEmbed()
             .addField("Action :", "kick")
-            .addField("Utilisateur :", user.username)
-            .addField("Modérateur :", message.author.username)
+            .addField("Utilisateur :", user.toString())
+            .addField("Modérateur :", message.author.toString())
             .setColor(0x800000)
             .setAuthor(message.author.username, message.author.avatarURL)
             .setTimestamp()
@@ -238,8 +238,8 @@ bot.on("message", function(message) {
 
             var embed = new Discord.RichEmbed()
             .addField("Action :", "ban")
-            .addField("Utilisateur :", user.username)
-            .addField("Modérateur :", message.author.username)
+            .addField("Utilisateur :", user.toString())
+            .addField("Modérateur :", message.author.toString())
             .setColor(0x0000ff)
             .setAuthor(message.author.username, message.author.avatarURL)
             .setTimestamp()
@@ -254,7 +254,7 @@ bot.on("message", function(message) {
 
             var embed = new Discord.RichEmbed()
             .addField("Action :", "supression de messages")
-            .addField("Modérateur :", message.author.username)
+            .addField("Modérateur :", message.author.toString())
             .addField("Nombre de messages :", messagecount)
             .setColor(0x0000ff)
             .setAuthor(message.author.username, message.author.avatarURL)
@@ -291,9 +291,9 @@ bot.on("message", function(message) {
         member.addRole(rolemodo)
             
         var embed = new Discord.RichEmbed()
-        .addField("Action :", "Ajout du role Modérateur à un utilisateur")
-        .addField("Utilisateur :", user.username)
-        .addField("Modérateur :", message.author.username)
+        .addField("Action :", "Ajout du role" + rolemodo + "à un utilisateur")
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
         .setColor(0x0000ff)
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTimestamp()
@@ -314,7 +314,14 @@ bot.on("message", function(message) {
 
 
         var user = message.mentions.members.first();
-        user.sendMessage("Le modérateur " + message.author.toString() + " t'a ajouté le grade Graphiste, profites-en bien !")
+        var embed = new Discord.RichEmbed()
+        .addField("Action :", "Ajout du role" + rolegraphiste + "à un utilisateur")
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
+        .setColor(0x0000ff)
+        .setAuthor(message.author.username, message.author.avatarURL)
+        .setTimestamp()
+         member.guild.channels.find("name", "mod-log").sendEmbed(embed);
         message.channel.sendMessage("Role graphiste ajouté à " + member.toString())
         break;
         case "live":
