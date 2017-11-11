@@ -74,8 +74,8 @@ bot.on("guildMemberRemove", function(member) {
 bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
 
-    if (message.content == "A quoi sert le Sonic Bot ?") {
-        message.channel.sendMessage("J'ai été créé par Azecko car il s'ennuyait, tu peux faire _help pour savoir à quoi je sers.");
+    if (message.content == "Lined") {
+        message.channel.sendMessage("Pose directement ta question");
     }
 
     if (!message.content.startsWith(PREFIX)) return;
