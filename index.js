@@ -251,7 +251,8 @@ bot.on("message", function(message) {
             message.channel.fetchMessages({
                 limit: messagecount
             }).then(messages => message.channel.bulkDelete(messagecount));
-
+            
+            setTimeout(() => { message.channel.send("J'ai supprimé `" + messagecount + "` messages !"); }, 1000);
             var embed = new Discord.RichEmbed()
             .addField("Action :", "supression de messages")
             .addField("Modérateur :", message.author.toString())
