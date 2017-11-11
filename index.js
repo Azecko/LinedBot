@@ -124,8 +124,8 @@ bot.on("message", function(message) {
 
         var embed = new Discord.RichEmbed()
         .addField("Action :", "Unmute")
-        .addField("Utilisateur :", user.username)
-        .addField("Modérateur :", message.author.username)
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
         .setColor(0x808000)
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTimestamp()
@@ -143,8 +143,8 @@ bot.on("message", function(message) {
 
         var embed = new Discord.RichEmbed()
         .addField("Action :", "Mute")
-        .addField("Utilisateur :", user.username)
-        .addField("Modérateur :", message.author.username)
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
         .setColor(0x808000)
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTimestamp()
@@ -343,9 +343,9 @@ bot.on("message", function(message) {
             user.sendMessage(message.author.toString() + " t'a ajouté le grade Friend, profite-en bien !");
 
             var embed = new Discord.RichEmbed()
-            .addField("Action :", "Ajout du grade Friend à un utilisateur")
-            .addField("Utilisateur :", user.username)
-            .addField("Modérateur :", message.author.username)
+            .addField("Action :", "Ajout du grade " + rolefriend + " à un utilisateur")
+            .addField("Utilisateur :", user.toString())
+            .addField("Modérateur :", message.author.toString())
             .setColor(0x008040)
             .setAuthor(message.author.username, message.author.avatarURL)
             .setTimestamp()
