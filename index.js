@@ -334,6 +334,23 @@ bot.on("message", function(message) {
         message.delete()
         message.channel.sendEmbed(embed);
             break;
+         case "friend":
+            if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.sendMessage("Tu n'as pas la permission.");
+            if(!modlog) return message.reply("Je ne trouve pas de channel mod-log.");
+            var member = message.mentions.members.first();
+            if (message.mentions.users.size < 1) return message.reply("Tu as oublié de préciser à qui je dois ajouter le grade Friend")
+            member.addRole(rolefriend)
+            user.sendMessage(message.author.toString() + " t'a ajouté le grade Friend, profite-en bien !");
+
+            var embed = new Discord.RichEmbed()
+            .addField("Action :", "Ajout du grade Friend à un utilisateur")
+            .addField("Utilisateur :", user.username)
+            .addField("Modérateur :", message.author.username)
+            .setColor(0x008040)
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setTimestamp()
+            member.guild.channels.find("name", "mod-log").sendEmbed(embed);
+            break;
             default:
             message.channel.sendMessage("Commande invalide ^^")
     }
