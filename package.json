@@ -9,7 +9,9 @@
   "author": "Azecko",
   "license": "ISC",
   "dependencies": {
+    "discord-anti-spam": "^1.1.1",
     "discord.js": "^11.2.1",
+    "quick.db": "^2.0.7",
     "opusscript": "0.0.4",
     "ytdl-core": "^0.17.1"
   }
