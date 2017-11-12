@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const YTDL = require("ytdl-core");
+const db = require("quick.db");
+const antispam = require("discord-anti-spam");
 
 const TOKEN = "MzcxMzM1NjY0MDg5Njk0MjA5.DM0LWw.7QGCGsG65Fb0d2ozQyuHHPJSivc";
 const PREFIX = "L-";
@@ -55,6 +57,16 @@ var bot = new Discord.Client();
 
 var servers = {};
 
+antispam(bot, {
+  warnBuffer: 3, //Maximum amount of messages allowed to send in the interval time before getting warned. 
+  maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned. 
+  interval: 1000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned. 
+  warningMessage: "arrête de spam sinon je vais te ban tu vas pas tout comprendre.", // Warning message send to the user indicating they are going to fast. 
+  banMessage: "a été banni pour spam, quelqu'un veut le rejoindre ?", // Ban message, always tags the banned user in front of it. 
+  maxDuplicatesWarning = 7; // Maximum amount of duplicate messages a user can send in a timespan before getting warned 
+  maxDuplicatesBan = 10; // Maximum amount of duplicate messages a user can send in a timespan before getting banned 
+});
+
 bot.on("ready", function () {
     console.log("LinedBot ready !");
     bot.user.setGame("L-help")
@@ -72,6 +84,21 @@ bot.on("guildMemberRemove", function(member) {
 });
 
 bot.on("message", function(message) {
+        db.updateValue(message.author.id + message.guild.id, 1).then(i => {
+        let messages;
+        if (i.value == 25) messages = 25; // Niveau 1
+        else if (i.value == 50) messages = 50; // Niveau 2
+        else if (i.value == 75) messages = 75; // Niveau 3
+        else if (i.value == 150) messages = 150; // Niveau 4
+        else if (i.value == 200) messages = 200; // Niveau 5
+
+        if (!isNaN(messages)) {
+            db.updateValue('userLevel_' + message.author.id + message.guild.id, 1).then(o => {
+                message.channel.send("Tu as envoyé `" + messages + "` messages alors tu monte en niveau ! Tu es passé niveau `" + o.value + "`")
+            })
+
+        }
+    })
     if (message.author.equals(bot.user)) return;
 
     if (message.content == "Lined") {
@@ -351,6 +378,20 @@ bot.on("message", function(message) {
             .setAuthor(message.author.username, message.author.avatarURL)
             .setTimestamp()
             member.guild.channels.find("name", "mod-log").sendEmbed(embed);
+            break;
+           case "level":
+            db.fetchObject(message.author.id + message.guild.id).then(i => {
+                db.fetchObject('userLevel_' + message.author.id + message.guild.id).then(o => {
+                    var embed = new Discord.RichEmbed()
+                    .setAuthor(message.author.username, message.author.avatarURL)
+                    .addField("Messages envoyés", i.value + 1)
+                    .addField("Niveau", o.value)
+                    .setTimestamp()
+                    .setThumbnail(message.author.avatarURL)
+                    .setColor(generateHex())
+                    message.channel.sendEmbed(embed)
+                })
+            })
             break;
             default:
             message.channel.sendMessage("Commande invalide ^^")
