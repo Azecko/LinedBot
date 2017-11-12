@@ -57,16 +57,6 @@ var bot = new Discord.Client();
 
 var servers = {};
 
-antispam(bot, {
-  warnBuffer: 3, //Maximum amount of messages allowed to send in the interval time before getting warned. 
-  maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned. 
-  interval: 1000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned. 
-  warningMessage: "arrête de spam sinon je vais te ban tu vas pas tout comprendre.", // Warning message send to the user indicating they are going to fast. 
-  banMessage: "a été banni pour spam, quelqu'un veut le rejoindre ?", // Ban message, always tags the banned user in front of it. 
-  maxDuplicatesWarning = 7; // Maximum amount of duplicate messages a user can send in a timespan before getting warned 
-  maxDuplicatesBan = 10; // Maximum amount of duplicate messages a user can send in a timespan before getting banned 
-});
-
 bot.on("ready", function () {
     console.log("LinedBot ready !");
     bot.user.setGame("L-help")
